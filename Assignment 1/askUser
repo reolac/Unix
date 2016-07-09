@@ -1,0 +1,50 @@
+firstName=$1
+
+echo Hello $firstName, what is your last name?
+read lastName
+
+echo $firstName what is your birthday?
+read adate
+read amonth
+read ayear
+
+bdate=`date +%d`
+
+bmonth=`date +%m`
+
+let cmonth=amonth-bmonth
+
+let cdate=adate-bdate
+
+if [[ "$adate" -lt "$bdate" ]]
+	then
+	let cdate=bdate-adate
+	let cdate=31-cdate
+	if [[ "$amonth" -eq "2" ]]
+		then
+		let cdate=cdate+3		
+		fi
+	if [[ "$amonth" -eq "4" ]] || [[ "$amonth" -eq "6" ]] || [[ "$amonth" -eq "9" ]] || [[ "$amonth" -eq "11" ]]
+		then
+		let cdate=cdate+1
+		fi 
+	fi
+
+if [[ "$amonth" -lt "$bmonth" ]]
+	then
+	let cmonth=bmonth-amonth
+	let cmonth=12-cmonth
+	fi
+
+if [[ "$amonth" -eq "$bmonth" ]]
+	then
+	let cmonth=11
+	fi
+
+if [[ "$amonth" -eq "$bmonth" ]] && [[ "$adate" -eq "$bdate" ]]
+	then
+	let cmonth=12
+	let cdate=0
+	fi
+
+echo "askUser.sh says that" $firstName $lastName "was born on" $adate"/"$amonth"/"$ayear "and it is $cmonth month(s) $cdate day(s) until his next birthday" >>$firstName$lastName.txt

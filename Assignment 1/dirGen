@@ -1,0 +1,22 @@
+mkdir "Folder One"
+mkdir "Folder Two"
+mkdir "Folder Three"
+mkdir "Folder Four"
+mkdir "Folder Five"
+
+cd "Folder One"
+touch "file one.txt"
+
+cd ~/"Folder Two"
+touch "file two.png"
+
+cd ~/"Folder Three"
+touch "file three.pdf"
+
+cd ~/"Folder Four"
+touch "file four.doc"
+
+cd ~/"Folder Five"
+touch "file five.txt"
+
+
